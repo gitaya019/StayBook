@@ -8,7 +8,7 @@ import './styles/App.css';
 
 const App = () => {
   return (
-    <Router basename={import.meta.env.BASE_URL}>
+    <Router basename="/StayBook">
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />

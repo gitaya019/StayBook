@@ -13,6 +13,7 @@ const RegisterPage = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -20,6 +21,15 @@ const RegisterPage = () => {
       ...form,
       [e.target.name]: e.target.value,
     });
+
+    // Clear password field errors if the user starts typing again
+    if (e.target.name === 'password' || e.target.name === 'confirmPassword') {
+      setErrors({
+        ...errors,
+        password: '',
+        confirmPassword: '',
+      });
+    }
   };
 
   const validate = () => {
@@ -74,7 +84,7 @@ const RegisterPage = () => {
         <Form.Group className="mb-3">
           <Form.Label>Contraseña</Form.Label>
           <Form.Control
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             name="password"
             value={form.password}
             onChange={handleChange}
@@ -85,7 +95,7 @@ const RegisterPage = () => {
         <Form.Group className="mb-3">
           <Form.Label>Confirmar Contraseña</Form.Label>
           <Form.Control
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             name="confirmPassword"
             value={form.confirmPassword}
             onChange={handleChange}
@@ -93,6 +103,11 @@ const RegisterPage = () => {
           />
           <Form.Control.Feedback type="invalid">{errors.confirmPassword}</Form.Control.Feedback>
         </Form.Group>
+        <Form.Check
+          type="checkbox"
+          label="Mostrar contraseñas"
+          onChange={() => setShowPassword(!showPassword)}
+        />
         <Button type="submit">Registrarse</Button>
       </Form>
     </Container>

@@ -11,6 +11,7 @@ const LoginPage = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -18,6 +19,14 @@ const LoginPage = () => {
       ...form,
       [e.target.name]: e.target.value,
     });
+
+    // Clear password field errors if the user starts typing again
+    if (e.target.name === 'password') {
+      setErrors({
+        ...errors,
+        password: '',
+      });
+    }
   };
 
   const validate = () => {
@@ -59,13 +68,18 @@ const LoginPage = () => {
         <Form.Group className="mb-3">
           <Form.Label>Contraseña</Form.Label>
           <Form.Control
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             name="password"
             value={form.password}
             onChange={handleChange}
             isInvalid={!!errors.password}
           />
           <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
+          <Form.Check
+            type="checkbox"
+            label="Mostrar contraseña"
+            onChange={() => setShowPassword(!showPassword)}
+          />
         </Form.Group>
         <Button type="submit">Iniciar Sesión</Button>
       </Form>
