@@ -1,42 +1,91 @@
+/*Seccion de bienvenida en el home*/
 .hero-section {
-  background: linear-gradient(135deg, #00ffd5, #006eff);
-  color: white;
+  background: linear-gradient(135deg, #79B3E4, #1E3A5F);
+  color: #FFFFFF;
   padding: 100px 0;
   text-align: center;
   position: relative;
   overflow: hidden;
 }
 
-.hero-section::before {
+/*Burbujas de la bienvenida*/
+
+.hero-section::before,
+.hero-section::after,
+.bubble-1,
+.bubble-2,
+.bubble-3,
+.bubble-4 {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: repeating-linear-gradient(
-    45deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.1) 1px,
-    transparent 1px,
-    transparent 10px
-  );
-  animation: move 20s linear infinite;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  animation: bubble 15s linear infinite;
 }
 
-@keyframes move {
+.hero-section::before {
+  width: 30px;
+  height: 30px;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.hero-section::after {
+  width: 20px;
+  height: 20px;
+  right: 10%;
+  animation-delay: -7.5s;
+}
+
+.bubble-1 {
+  width: 35px;
+  height: 35px;
+  left: 30%;
+  animation-delay: -3.5s;
+}
+
+.bubble-2 {
+  width: 15px;
+  height: 15px;
+  right: 30%;
+  animation-delay: -5.5s;
+}
+
+.bubble-3 {
+  width: 25px;
+  height: 25px;
+  left: 50%;
+  animation-delay: -2s;
+}
+
+.bubble-4 {
+  width: 18px;
+  height: 18px;
+  right: 50%;
+  animation-delay: -6s;
+}
+
+@keyframes bubble {
   0% {
-    transform: translate(0, 0);
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
   }
   100% {
-    transform: translate(50%, 50%);
+    transform: translateY(-100vh) scale(2);
+    opacity: 0;
   }
 }
+
+/*Estilos del Home general, cards y imagenes*/
 
 .hero-section h1 {
   font-size: 3rem;
   margin-bottom: 20px;
   position: relative;
+  color: white;
 }
 
 .hero-section p {
@@ -46,8 +95,8 @@
 }
 
 .hero-section .btn-primary {
-  background-color: #fff;
-  color: #6e8efb;
+  background-color: #FFFFFF;
+  color: #1E3A5F;
   border: none;
   padding: 10px 30px;
   font-size: 1.1rem;
@@ -56,45 +105,63 @@
 }
 
 .hero-section .btn-primary:hover {
-  background-color: #0000;
+  background-color: #79B3E4;
+  color: #FFFFFF;
   transform: translateY(-3px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .feature-section {
   padding: 50px 0;
-  background-color: #f8f9fa;
+  background-color: #F8F9FA;
 }
 
 .feature-card {
-  background-color: white;
+  background-color: #FFFFFF;
   border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(30, 58, 95, 0.1);
   padding: 40px;
   transition: all 0.3s ease;
 }
 
 .feature-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 15px 40px rgba(30, 58, 95, 0.2);
 }
 
 .feature-card h2 {
-  color: #333;
+  color: #1E3A5F;
   margin-bottom: 20px;
 }
 
 .feature-card p {
-  color: #666;
+  color: #4A7CAC;
+}
+
+.image-container {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(30, 58, 95, 0.1);
+  transition: all 0.3s ease;
 }
 
 .image-container img {
   width: 100%;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  height: auto;
+  object-fit: cover;
   transition: all 0.3s ease;
 }
 
-.image-container img:hover {
+.image-container:hover {
   transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .image-container {
+    margin-bottom: 30px;
+    margin-top: 30px;
+  }
 }

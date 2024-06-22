@@ -7,10 +7,10 @@ const Header = () => {
   const location = useLocation();
 
   return (
-    <Navbar bg="light" expand="lg" className="custom-navbar">
+    <Navbar expand="lg" className="custom-navbar">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          <img src={logo} alt="Recer-Habi" width="150" />
+          <img src={logo} alt="Recer-Habi" className="header-logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

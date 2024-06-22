@@ -7,6 +7,10 @@ const Home = () => {
   return (
     <>
       <div className="hero-section">
+        <div className="bubble-1"></div>
+        <div className="bubble-2"></div>
+        <div className="bubble-3"></div>
+        <div className="bubble-4"></div>
         <Container>
           <h1>Administra tu hotel de manera fácil y sencilla</h1>
           <p>Crea, gestiona y haz crecer tu negocio hotelero con nuestra plataforma intuitiva</p>
