@@ -6,10 +6,9 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import './styles/App.css';
 
-
 const App = () => {
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
