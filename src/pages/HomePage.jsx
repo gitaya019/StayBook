@@ -2,10 +2,13 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import hotelImage from '../assets/hotel-management.jpg';
 import dashboardImage from '../assets/dashboard.jpg';
 import '../styles/Home.css';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const Home = () => {
   return (
     <>
+    <Header/>
       <div className="hero-section">
         <div className="bubble-1"></div>
         <div className="bubble-2"></div>
@@ -49,6 +52,7 @@ const Home = () => {
           </Row>
         </Container>
       </div>
+      <Footer/>
     </>
   );
 };

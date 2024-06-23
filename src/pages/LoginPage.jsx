@@ -3,6 +3,8 @@ import { Container, Form, Button } from 'react-bootstrap';
 import { auth } from '../firebase-config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const LoginPage = () => {
   const [form, setForm] = useState({
@@ -51,6 +53,8 @@ const LoginPage = () => {
   };
 
   return (
+    <>
+    <Header/>
     <Container className="mt-5">
       <h2>Iniciar Sesión</h2>
       <Form onSubmit={handleSubmit}>
@@ -84,6 +88,8 @@ const LoginPage = () => {
         <Button type="submit">Iniciar Sesión</Button>
       </Form>
     </Container>
+    <Footer/>
+    </>
   );
 };
 

@@ -3,6 +3,8 @@ import { Container, Form, Button } from 'react-bootstrap';
 import { auth } from '../firebase-config';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const RegisterPage = () => {
   const [form, setForm] = useState({
@@ -56,6 +58,8 @@ const RegisterPage = () => {
   };
 
   return (
+    <>
+    <Header/>
     <Container className="mt-5">
       <h2>Registro</h2>
       <Form onSubmit={handleSubmit}>
@@ -111,6 +115,8 @@ const RegisterPage = () => {
         <Button type="submit">Registrarse</Button>
       </Form>
     </Container>
+    <Footer/>
+    </>
   );
 };
 
