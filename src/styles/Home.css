@@ -1,7 +1,7 @@
 /*Seccion de bienvenida en el home*/
 .hero-section {
-  background: linear-gradient(135deg, #79B3E4, #1E3A5F);
-  color: #FFFFFF;
+  background: linear-gradient(135deg, #79b3e4, #1e3a5f);
+  color: #ffffff;
   padding: 100px 0;
   text-align: center;
   position: relative;
@@ -16,7 +16,7 @@
 .bubble-2,
 .bubble-3,
 .bubble-4 {
-  content: '';
+  content: "";
   position: absolute;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 50%;
@@ -95,8 +95,8 @@
 }
 
 .hero-section .btn-primary {
-  background-color: #FFFFFF;
-  color: #1E3A5F;
+  background-color: #ffffff;
+  color: #1e3a5f;
   border: none;
   padding: 10px 30px;
   font-size: 1.1rem;
@@ -105,19 +105,19 @@
 }
 
 .hero-section .btn-primary:hover {
-  background-color: #79B3E4;
-  color: #FFFFFF;
+  background-color: #79b3e4;
+  color: #ffffff;
   transform: translateY(-3px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .feature-section {
   padding: 50px 0;
-  background-color: #F8F9FA;
+  background-color: #f8f9fa;
 }
 
 .feature-card {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(30, 58, 95, 0.1);
   padding: 40px;
@@ -130,12 +130,12 @@
 }
 
 .feature-card h2 {
-  color: #1E3A5F;
+  color: #1e3a5f;
   margin-bottom: 20px;
 }
 
 .feature-card p {
-  color: #4A7CAC;
+  color: #4a7cac;
 }
 
 .image-container {

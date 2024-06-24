@@ -1,0 +1,86 @@
+/* General styles */
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f4f6f9;
+  color: #333;
+}
+
+/* LoginPage Container */
+.login-page-container {
+  max-width: 400px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 70px;
+}
+
+/* LoginPage Heading */
+.login-page-heading {
+  font-weight: 600;
+  color: #007bff;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* LoginPage Form */
+.login-page-form {
+  width: 100%;
+}
+
+.login-page-form-group {
+  margin-bottom: 20px;
+}
+
+.login-page-form-label {
+  font-weight: 500;
+  color: #666;
+}
+
+.login-page-form-control {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.login-page-form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.login-page-form-control.is-invalid {
+  border-color: #dc3545;
+}
+
+.login-page-form-control.is-invalid:focus {
+  box-shadow: 0 0 5px rgba(220, 53, 69, 0.5);
+}
+
+.login-page-form-control-feedback {
+  color: #dc3545;
+}
+
+.login-page-form-check-label {
+  margin-left: 5px;
+  font-size: 14px;
+  color: #666;
+}
+
+/* LoginPage Button */
+.login-page-submit-button {
+  width: 100%;
+  background-color: #007bff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-page-submit-button:hover {
+  background-color: #0056b3;
+}
