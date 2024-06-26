@@ -1,6 +1,6 @@
 // src/pages/HotelProfile.js
 import { useState, useEffect } from 'react';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../utils/authUtils'; 
 import { db, auth } from '../firebase-config';
 import { doc, getDoc } from 'firebase/firestore';
 import { Button, Container } from 'react-bootstrap';

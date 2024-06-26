@@ -9,27 +9,16 @@ import Footer from "../components/Footer";
 import "../styles/LoginPage.css";
 
 const LoginPage = () => {
-  const [form, setForm] = useState({
-    email: "",
-    password: "",
-  });
-
+  const [form, setForm] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
-
-    // Clear password field errors if the user starts typing again
+    setForm({ ...form, [e.target.name]: e.target.value });
     if (e.target.name === "password") {
-      setErrors({
-        ...errors,
-        password: "",
-      });
+      setErrors({ ...errors, password: "" });
     }
   };
 
@@ -45,6 +34,7 @@ const LoginPage = () => {
     const validationErrors = validate();
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length === 0) {
+      setLoading(true);
       try {
         const userCredential = await signInWithEmailAndPassword(auth, form.email, form.password);
         const user = userCredential.user;
@@ -64,6 +54,8 @@ const LoginPage = () => {
         }
       } catch (error) {
         setErrors({ email: "Credenciales inválidas" });
+      } finally {
+        setLoading(false);
       }
     }
   };
@@ -71,6 +63,11 @@ const LoginPage = () => {
   return (
     <>
       <Header />
+      {loading && (
+        <div className="loading-screen">
+          <div className="loading-spinner"></div>
+        </div>
+      )}
       <Container className="login-page-container mt-5">
         <h2 className="login-page-heading">Iniciar Sesión</h2>
         <Form className="login-page-form" onSubmit={handleSubmit}>
@@ -92,9 +89,7 @@ const LoginPage = () => {
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group className="login-page-form-group mb-3">
-            <Form.Label className="login-page-form-label">
-              Contraseña
-            </Form.Label>
+            <Form.Label className="login-page-form-label">Contraseña</Form.Label>
             <Form.Control
               type={showPassword ? "text" : "password"}
               name="password"

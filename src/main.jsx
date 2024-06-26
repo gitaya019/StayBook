@@ -28,7 +28,7 @@ const router = createHashRouter([
   {
     path: '/user-profile',
     element: (
-      <ProtectedRoute>
+      <ProtectedRoute userType="Usuario">
         <UserProfilePage />
       </ProtectedRoute>
     )
@@ -36,7 +36,7 @@ const router = createHashRouter([
   {
     path: '/hotel-profile',
     element: (
-      <ProtectedRoute>
+      <ProtectedRoute userType="Hotel">
         <HotelProfilePage />
       </ProtectedRoute>
     )
