@@ -8,6 +8,8 @@ import LoginPage from './pages/LoginPage';
 import UserProfilePage from './pages/UserProfile';
 import HotelProfilePage from './pages/HotelProfile';
 import NotFoundPage from './pages/NotFoundPage';
+import TermsPage from './pages/TermsPage';
+import PrivacyPage from './pages/PrivacyPage';
 import { createHashRouter, RouterProvider } from 'react-router-dom';
 import './styles/App.css';
 import { AuthProvider } from './context/AuthContext';
@@ -41,6 +43,14 @@ const router = createHashRouter([
         <HotelProfilePage />
       </ProtectedRoute>
     )
+  },
+  {
+    path: '/terms',
+    element: <TermsPage />
+  },
+  {
+    path: '/privacy',
+    element: <PrivacyPage />
   },
   {
     path: '*',

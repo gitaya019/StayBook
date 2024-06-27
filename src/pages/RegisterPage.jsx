@@ -2,7 +2,14 @@ import { useState } from "react";
 import { Container, Form, Button, Spinner } from "react-bootstrap";
 import { auth, db } from "../firebase-config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { doc, setDoc, getDocs, collection, query, where } from "firebase/firestore";
+import {
+  doc,
+  setDoc,
+  getDocs,
+  collection,
+  query,
+  where,
+} from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { FaUser, FaBuilding } from "react-icons/fa";
 import Header from "../components/Header";
@@ -14,9 +21,9 @@ const RegisterPage = () => {
     nombre: "",
     email: "",
     password: "",
-    confirmPassword: "",
     telefono: "",
     userType: "",
+    acceptedTerms: false,
   });
 
   const [errors, setErrors] = useState({});
@@ -31,18 +38,14 @@ const RegisterPage = () => {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
     setForm({
       ...form,
-      [e.target.name]: e.target.value,
+      [name]: type === "checkbox" ? checked : value,
     });
 
-    if (e.target.name === "password" || e.target.name === "confirmPassword") {
-      setErrors({
-        ...errors,
-        password: "",
-        confirmPassword: "",
-      });
-      validatePassword(e.target.value);
+    if (name === "password") {
+      validatePassword(value);
     }
   };
 
@@ -67,12 +70,12 @@ const RegisterPage = () => {
     if (!form.nombre) newErrors.nombre = "El nombre es requerido";
     if (!form.email) newErrors.email = "El email es requerido";
     if (!form.password) newErrors.password = "La contraseña es requerida";
-    if (form.password !== form.confirmPassword)
-      newErrors.confirmPassword = "Las contraseñas no coinciden";
     if (!form.telefono) newErrors.telefono = "El teléfono es requerido";
     if (!/^\d{10}$/.test(form.telefono))
       newErrors.telefono = "El teléfono debe tener 10 dígitos";
     if (!form.userType) newErrors.userType = "Seleccione un tipo de usuario";
+    if (!form.acceptedTerms)
+      newErrors.acceptedTerms = "Debe aceptar los términos y políticas";
     return newErrors;
   };
 
@@ -172,47 +175,42 @@ const RegisterPage = () => {
               name="password"
               value={form.password}
               onChange={handleChange}
+              onFocus={() => setShowPassword(true)}
+              onBlur={() => setShowPassword(false)}
               isInvalid={!!errors.password}
             />
             <Form.Control.Feedback type="invalid">
               {errors.password}
             </Form.Control.Feedback>
+            {showPassword && (
+              <div className="password-requirements">
+                <p
+                  className={passwordRequirements.length ? "valid" : "invalid"}
+                >
+                  Mínimo 8 caracteres
+                </p>
+                <p
+                  className={
+                    passwordRequirements.upperCase ? "valid" : "invalid"
+                  }
+                >
+                  Una letra mayúscula
+                </p>
+                <p
+                  className={
+                    passwordRequirements.lowerCase ? "valid" : "invalid"
+                  }
+                >
+                  Una letra minúscula
+                </p>
+                <p
+                  className={passwordRequirements.number ? "valid" : "invalid"}
+                >
+                  Un número
+                </p>
+              </div>
+            )}
           </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Confirmar Contraseña</Form.Label>
-            <Form.Control
-              type={showPassword ? "text" : "password"}
-              name="confirmPassword"
-              value={form.confirmPassword}
-              onChange={handleChange}
-              isInvalid={!!errors.confirmPassword}
-            />
-            <Form.Control.Feedback type="invalid">
-              {errors.confirmPassword}
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Check
-              type="checkbox"
-              label="Mostrar contraseñas"
-              onChange={() => setShowPassword(!showPassword)}
-              checked={showPassword}
-            />
-          </Form.Group>
-          <div className="password-requirements">
-            <p className={passwordRequirements.length ? "valid" : "invalid"}>
-              Mínimo 8 caracteres
-            </p>
-            <p className={passwordRequirements.upperCase ? "valid" : "invalid"}>
-              Una letra mayúscula
-            </p>
-            <p className={passwordRequirements.lowerCase ? "valid" : "invalid"}>
-              Una letra minúscula
-            </p>
-            <p className={passwordRequirements.number ? "valid" : "invalid"}>
-              Un número
-            </p>
-          </div>
           <div className="user-type-selection">
             <h5 className="user-type-selection-heading">
               Seleccione el tipo de usuario:
@@ -241,12 +239,29 @@ const RegisterPage = () => {
               <div className="invalid-feedback d-block">{errors.userType}</div>
             )}
           </div>
+          <Form.Group className="mb-3">
+            <Form.Check
+              type="checkbox"
+              label="Acepto los términos y políticas de Recer-Habi"
+              name="acceptedTerms"
+              checked={form.acceptedTerms}
+              onChange={handleChange}
+              isInvalid={!!errors.acceptedTerms}
+            />
+            <Form.Control.Feedback type="invalid">
+              {errors.acceptedTerms}
+            </Form.Control.Feedback>
+          </Form.Group>
           <Button
             type="submit"
             className="register-page-submit-button"
             disabled={isLoading}
           >
-            {isLoading ? <Spinner animation="border" size="sm" /> : "Registrarse"}
+            {isLoading ? (
+              <Spinner animation="border" size="sm" />
+            ) : (
+              "Registrarse"
+            )}
           </Button>
         </Form>
       </Container>

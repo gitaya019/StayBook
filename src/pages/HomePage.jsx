@@ -4,6 +4,8 @@ import dashboardImage from '../assets/dashboard.jpg';
 import '../styles/Home.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { Link } from 'react-router-dom';
+
 
 const Home = () => {
   return (
@@ -17,7 +19,7 @@ const Home = () => {
         <Container>
           <h1>Administra tu hotel de manera fácil y sencilla</h1>
           <p>Crea, gestiona y haz crecer tu negocio hotelero con nuestra plataforma intuitiva</p>
-          <Button variant="primary" size="lg">Comienza ahora</Button>
+          <Button as={Link} to="/register" variant="primary" size="lg">Comienza ahora</Button>
         </Container>
       </div>
 
