@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Container, Form, Button, Spinner, InputGroup } from "react-bootstrap";
+import { Container, Form, Button, Spinner } from "react-bootstrap";
 import { auth, db } from "../firebase-config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc, getDocs, collection, query, where } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import { FaUser, FaBuilding, FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaUser, FaBuilding } from "react-icons/fa";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../styles/RegisterPage.css";
@@ -169,39 +169,37 @@ const RegisterPage = () => {
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Contraseña</Form.Label>
-            <InputGroup>
-              <Form.Control
-                type={showPassword ? "text" : "password"}
-                name="password"
-                value={form.password}
-                onChange={handleChange}
-                isInvalid={!!errors.password}
-              />
-              <InputGroup.Text onClick={() => setShowPassword(!showPassword)}>
-                {showPassword ? <FaEyeSlash /> : <FaEye />}
-              </InputGroup.Text>
-              <Form.Control.Feedback type="invalid">
-                {errors.password}
-              </Form.Control.Feedback>
-            </InputGroup>
+            <Form.Control
+              type={showPassword ? "text" : "password"}
+              name="password"
+              value={form.password}
+              onChange={handleChange}
+              isInvalid={!!errors.password}
+            />
+            <Form.Control.Feedback type="invalid">
+              {errors.password}
+            </Form.Control.Feedback>
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Confirmar Contraseña</Form.Label>
-            <InputGroup>
-              <Form.Control
-                type={showPassword ? "text" : "password"}
-                name="confirmPassword"
-                value={form.confirmPassword}
-                onChange={handleChange}
-                isInvalid={!!errors.confirmPassword}
-              />
-              <InputGroup.Text onClick={() => setShowPassword(!showPassword)}>
-                {showPassword ? <FaEyeSlash /> : <FaEye />}
-              </InputGroup.Text>
-              <Form.Control.Feedback type="invalid">
-                {errors.confirmPassword}
-              </Form.Control.Feedback>
-            </InputGroup>
+            <Form.Control
+              type={showPassword ? "text" : "password"}
+              name="confirmPassword"
+              value={form.confirmPassword}
+              onChange={handleChange}
+              isInvalid={!!errors.confirmPassword}
+            />
+            <Form.Control.Feedback type="invalid">
+              {errors.confirmPassword}
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Check
+              type="checkbox"
+              label="Mostrar contraseña"
+              onChange={() => setShowPassword(!showPassword)}
+              checked={showPassword}
+            />
           </Form.Group>
           <div className="password-requirements">
             <p className={passwordRequirements.length ? "valid" : "invalid"}>

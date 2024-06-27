@@ -184,3 +184,17 @@ body {
   margin-right: 8px;
   font-weight: bold;
 }
+
+.register-page-form .form-check {
+  margin-top: 10px;
+}
+
+.register-page-form .form-check-label {
+  font-size: 14px;
+  color: #666;
+}
+
+.register-page-form .form-check-input:checked {
+  background-color: #007bff;
+  border-color: #007bff;
+}
