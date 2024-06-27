@@ -28,44 +28,48 @@ body {
   width: 100%;
 }
 
-.register-page-form-group {
+.register-page-form .form-group {
   margin-bottom: 20px;
 }
 
-.register-page-form-label {
+.register-page-form .form-label {
   font-weight: 500;
   color: #666;
 }
 
-.register-page-form-control {
+.register-page-form .form-control {
   border: 1px solid #ddd;
   border-radius: 5px;
   padding: 10px;
   font-size: 16px;
 }
 
-.register-page-form-control:focus {
+.register-page-form .form-control:focus {
   border-color: #007bff;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-.register-page-form-control.is-invalid {
+.register-page-form .form-control.is-invalid {
   border-color: #dc3545;
 }
 
-.register-page-form-control.is-invalid:focus {
+.register-page-form .form-control.is-invalid:focus {
   box-shadow: 0 0 5px rgba(220, 53, 69, 0.5);
 }
 
-.register-page-form-control-feedback {
+.register-page-form .invalid-feedback {
   color: #dc3545;
 }
 
-.register-page-form-check-label {
-  margin-left: 5px;
-  margin-bottom: 15px;
-  font-size: 14px;
-  color: #666;
+/* Input group for password fields */
+.register-page-form .input-group .form-control {
+  border-right: none;
+}
+
+.register-page-form .input-group-text {
+  background-color: #fff;
+  border-left: none;
+  cursor: pointer;
 }
 
 /* RegisterPage Button */
@@ -86,16 +90,7 @@ body {
   background-color: #0056b3;
 }
 
-/* RegisterPage Footer */
-.register-page-footer {
-  margin-top: 50px;
-  text-align: center;
-  color: #888;
-  font-size: 14px;
-}
-
-
-/* Styles for user type selection */
+/* User type selection */
 .user-type-selection {
   margin: 20px 0;
 }
@@ -136,7 +131,7 @@ body {
   color: #007bff;
 }
 
-/* Loading screen styles */
+/* Loading screen */
 .loading-screen {
   position: fixed;
   top: 0;
@@ -151,19 +146,41 @@ body {
 }
 
 .loading-spinner {
-  width: 100px;
-  height: 100px;
-  border: 10px solid #007bff;
-  border-top: 10px solid #fff;
+  width: 50px;
+  height: 50px;
+  border: 5px solid #007bff;
+  border-top: 5px solid #fff;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Password requirements */
+.password-requirements {
+  margin-top: 10px;
+}
+
+.password-requirements p {
+  margin: 0;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+
+.password-requirements .valid {
+  color: green;
+}
+
+.password-requirements .invalid {
+  color: red;
+}
+
+.password-requirements p::before {
+  content: '•';
+  margin-right: 8px;
+  font-weight: bold;
 }

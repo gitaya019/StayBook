@@ -7,6 +7,7 @@ import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import UserProfilePage from './pages/UserProfile';
 import HotelProfilePage from './pages/HotelProfile';
+import NotFoundPage from './pages/NotFoundPage';
 import { createHashRouter, RouterProvider } from 'react-router-dom';
 import './styles/App.css';
 import { AuthProvider } from './context/AuthContext';
@@ -40,6 +41,10 @@ const router = createHashRouter([
         <HotelProfilePage />
       </ProtectedRoute>
     )
+  },
+  {
+    path: '*',
+    element: <NotFoundPage />
   }
 ]);
 

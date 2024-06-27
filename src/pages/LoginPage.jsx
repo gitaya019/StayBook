@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import { auth, db } from "../firebase-config";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
@@ -38,6 +38,13 @@ const LoginPage = () => {
       try {
         const userCredential = await signInWithEmailAndPassword(auth, form.email, form.password);
         const user = userCredential.user;
+
+        if (!user.emailVerified) {
+          setErrors({ email: "Por favor, verifica tu correo electrónico antes de iniciar sesión." });
+          await sendEmailVerification(user);
+          setLoading(false);
+          return;
+        }
 
         // Obtener datos del usuario desde Firestore
         const docRef = doc(db, "users", user.uid);
