@@ -25,7 +25,6 @@ const RegisterPage = () => {
     upperCase: false,
     lowerCase: false,
     number: false,
-    specialChar: false,
   });
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -60,7 +59,6 @@ const RegisterPage = () => {
       upperCase: /[A-Z]/.test(password),
       lowerCase: /[a-z]/.test(password),
       number: /[0-9]/.test(password),
-      specialChar: /[!@#$%^&*(),.?":{}|<>-_]/.test(password),
     });
   };
 
@@ -196,7 +194,7 @@ const RegisterPage = () => {
           <Form.Group className="mb-3">
             <Form.Check
               type="checkbox"
-              label="Mostrar contraseña"
+              label="Mostrar contraseñas"
               onChange={() => setShowPassword(!showPassword)}
               checked={showPassword}
             />
@@ -213,9 +211,6 @@ const RegisterPage = () => {
             </p>
             <p className={passwordRequirements.number ? "valid" : "invalid"}>
               Un número
-            </p>
-            <p className={passwordRequirements.specialChar ? "valid" : "invalid"}>
-              Un carácter especial
             </p>
           </div>
           <div className="user-type-selection">
