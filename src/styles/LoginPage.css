@@ -1,7 +1,7 @@
 /* General styles */
 body {
   font-family: "Roboto", sans-serif;
-  background-color: #f4f6f9;
+  background-color: #f0f2f5;
   color: #333;
 }
 
@@ -9,44 +9,46 @@ body {
 .login-page-container {
   max-width: 400px;
   background: #fff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  margin-bottom: 70px;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 50px auto 70px;
 }
 
 /* LoginPage Heading */
 .login-page-heading {
-  font-weight: 600;
-  color: #007bff;
+  font-weight: 700;
+  color: #1877f2;
   margin-bottom: 30px;
   text-align: center;
+  font-size: 28px;
 }
 
 /* LoginPage Form */
-.login-page-form {
-  width: 100%;
-}
-
 .login-page-form-group {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .login-page-form-label {
   font-weight: 500;
-  color: #666;
+  color: #444;
+  margin-bottom: 8px;
+  display: block;
 }
 
 .login-page-form-control {
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 10px;
+  border: 1px solid #dde1e7;
+  border-radius: 8px;
+  padding: 12px;
   font-size: 16px;
+  width: 100%;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .login-page-form-control:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  border-color: #1877f2;
+  box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+  outline: none;
 }
 
 .login-page-form-control.is-invalid {
@@ -54,35 +56,56 @@ body {
 }
 
 .login-page-form-control.is-invalid:focus {
-  box-shadow: 0 0 5px rgba(220, 53, 69, 0.5);
+  box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.2);
 }
 
 .login-page-form-control-feedback {
   color: #dc3545;
+  font-size: 14px;
+  margin-top: 4px;
 }
 
 .login-page-form-check-label {
-  margin-left: 5px;
   font-size: 14px;
   color: #666;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.login-page-form-check-label input {
+  margin-right: 8px;
 }
 
 /* LoginPage Button */
 .login-page-submit-button {
   width: 100%;
-  background-color: #007bff;
+  background-color: #1877f2;
   border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: 500;
+  padding: 12px 20px;
+  font-size: 18px;
+  font-weight: 600;
   color: #fff;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .login-page-submit-button:hover {
-  background-color: #0056b3;
+  background-color: #166fe5;
+}
+
+.login-page-forgot-password {
+  display: block;
+  text-align: center;
+  color: #1877f2;
+  text-decoration: none;
+  font-size: 14px;
+  margin-top: 16px;
+}
+
+.login-page-forgot-password:hover {
+  text-decoration: underline;
 }
 
 /* Loading screen styles */
@@ -92,7 +115,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -100,10 +123,10 @@ body {
 }
 
 .loading-spinner {
-  width: 100px;
-  height: 100px;
-  border: 10px solid #007bff;
-  border-top: 10px solid #fff;
+  width: 50px;
+  height: 50px;
+  border: 5px solid #1877f2;
+  border-top: 5px solid #fff;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }

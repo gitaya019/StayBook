@@ -14,6 +14,7 @@ import { createHashRouter, RouterProvider } from 'react-router-dom';
 import './styles/App.css';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
+import ResetPasswordPage from './pages/ResetPasswordPage';
 
 const router = createHashRouter([
   {
@@ -55,7 +56,12 @@ const router = createHashRouter([
   {
     path: '*',
     element: <NotFoundPage />
+  },
+  {
+    path: '/reset-password',
+    element: <ResetPasswordPage />
   }
+
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

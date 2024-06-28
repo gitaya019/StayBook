@@ -3,7 +3,7 @@ import { Container, Form, Button } from "react-bootstrap";
 import { auth, db } from "../firebase-config";
 import { signInWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../styles/LoginPage.css";
@@ -121,6 +121,9 @@ const LoginPage = () => {
           <Button type="submit" className="login-page-submit-button">
             Iniciar Sesión
           </Button>
+          <Link to="/reset-password" className="login-page-forgot-password">
+            ¿Olvidaste tu contraseña?
+          </Link>
         </Form>
       </Container>
       <Footer className="login-page-footer" />
