@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Container, Form, Button, Spinner } from "react-bootstrap";
 import { auth, db } from "../firebase-config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { Link } from "react-router-dom";
 import {
   doc,
   setDoc,
@@ -242,7 +243,19 @@ const RegisterPage = () => {
           <Form.Group className="mb-3">
             <Form.Check
               type="checkbox"
-              label="Acepto los términos y políticas de Recer-Habi"
+              label={
+                <>
+                  Acepto los{" "}
+                  <Link to="/terms" className="footer-link">
+                    Términos y Condiciones
+                  </Link>
+                  {" "} y {" "}
+                  <Link to="/privacy" className="footer-link">
+                    Políticas de Privacidad
+                  </Link>{" "}
+                  de Recer-Habi
+                </>
+              }
               name="acceptedTerms"
               checked={form.acceptedTerms}
               onChange={handleChange}
